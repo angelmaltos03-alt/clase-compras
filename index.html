@@ -16,6 +16,58 @@
   <style>
     :root{color-scheme:dark;--bg:#0a0a0c;--panel:#111114;--line:rgba(255,255,255,.11);--muted:#86868b;--white:#f5f5f7;--accent:#d9f879;--cyan:#9de7e4}
     *{box-sizing:border-box}body{background:var(--bg);color:var(--white);font-family:Inter,ui-sans-serif,system-ui,sans-serif;overflow-x:hidden}::selection{background:var(--accent);color:#0a0a0c}.glass{background:rgba(10,10,12,.70);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.08)}.text-gradient{background:linear-gradient(115deg,#fff 10%,#b9b9c0 54%,#707077 100%);-webkit-background-clip:text;background-clip:text;color:transparent}.shine{background:linear-gradient(110deg,#f5f5f7 0%,#d4d4d8 45%,#fff 55%,#8b8b92 100%);background-size:220% auto;animation:shine 7s ease-in-out infinite}.pill-button{border:1px solid rgba(255,255,255,.18);transition:transform .25s ease,background .25s ease,border-color .25s ease}.pill-button:hover{transform:translateY(-2px);border-color:rgba(217,249,121,.55)}.primary-button{background:var(--accent);color:#10110a;box-shadow:0 0 35px rgba(217,249,121,.12);transition:transform .25s,box-shadow .25s}.primary-button:hover{transform:translateY(-2px);box-shadow:0 0 45px rgba(217,249,121,.24)}.hairline{border-color:var(--line)}.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.65,.3,1)}.reveal.visible{opacity:1;transform:translateY(0)}.hero-enter{animation:heroIn 1s cubic-bezier(.2,.65,.3,1) both}.hero-enter.delay{animation-delay:.16s}.hero-enter.delay2{animation-delay:.32s}.product-orb{will-change:transform;transform:translate3d(0,var(--parallax,0px),0) rotate(var(--tilt,0deg));transition:transform .18s ease-out}.metal-grid{background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(to bottom,black,transparent 95%)}.soft-spot{background:radial-gradient(ellipse at center,rgba(217,249,121,.12),transparent 67%)}.quiz-choice{border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.025);transition:all .2s}.quiz-choice:hover:not(:disabled){border-color:rgba(217,249,121,.55);background:rgba(217,249,121,.055);transform:translateY(-1px)}.quiz-choice.correct{border-color:#8fba43;background:rgba(217,249,121,.09)}.quiz-choice.wrong{border-color:#c46e78;background:rgba(196,110,120,.1)}.feedback{border:1px solid rgba(217,249,121,.28);background:rgba(217,249,121,.06)}.feedback.bad{border-color:rgba(196,110,120,.35);background:rgba(196,110,120,.07)}.progress-track{background:rgba(255,255,255,.1);height:4px;border-radius:99px;overflow:hidden}.progress-fill{height:100%;background:var(--accent);width:0;transition:width .4s ease}.module-card{background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.015));border:1px solid rgba(255,255,255,.10);transition:transform .3s,border-color .3s,background .3s}.module-card:hover{transform:translateY(-5px);border-color:rgba(255,255,255,.22);background:linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.02))}.iconbox{border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.045)}.guide-item[open] summary{color:var(--accent)}.guide-item summary{cursor:pointer;list-style:none}.guide-item summary::-webkit-details-marker{display:none}.guide-item summary:after{content:'+';float:right;color:#86868b}.guide-item[open] summary:after{content:'−';color:var(--accent)}.num-input{background:#08080a;border:1px solid rgba(255,255,255,.16);color:white;outline:none}.num-input:focus{border-color:rgba(217,249,121,.6);box-shadow:0 0 0 3px rgba(217,249,121,.07)}.toast{animation:toastIn .28s ease both}@keyframes heroIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}@keyframes shine{0%,100%{background-position:0% center}50%{background-position:100% center}}@keyframes toastIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
+
+    /* Modo aventura: progresión, recompensas visuales y microinteracciones */
+    :root{--violet:#a99bff;--mint:#d9f879}
+    .product-orb{isolation:isolate}
+    .product-orb::after{content:"";position:absolute;inset:3% 13%;border:1px solid rgba(217,249,121,.12);border-radius:50%;transform:rotate(-12deg);pointer-events:none;animation:orbitGlow 14s linear infinite}
+    .flowstep{position:relative;animation:floatStep 5s ease-in-out infinite}
+    .flowstep:nth-child(2){animation-delay:.35s}.flowstep:nth-child(3){animation-delay:.7s}.flowstep:nth-child(4){animation-delay:1.05s}
+    @keyframes orbitGlow{0%{transform:rotate(-12deg) scale(1);opacity:.45}50%{transform:rotate(168deg) scale(1.035);opacity:1}100%{transform:rotate(348deg) scale(1);opacity:.45}}
+    @keyframes floatStep{0%,100%{translate:0 0}50%{translate:0 -5px}}
+    .mission-complete{border-color:rgba(217,249,121,.38)!important;background:linear-gradient(145deg,rgba(217,249,121,.10),rgba(255,255,255,.015))!important;box-shadow:inset 0 0 28px rgba(217,249,121,.035)}
+    .module-card{position:relative;overflow:hidden}
+    .mission-complete::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 20%,rgba(217,249,121,.07) 50%,transparent 80%);transform:translateX(-120%);animation:cardShimmer 1.2s ease .12s 1;pointer-events:none}
+    .mission-locked{opacity:.4;filter:saturate(.45);cursor:not-allowed!important;transform:none!important}
+    .mission-locked:hover{border-color:rgba(255,255,255,.1)!important}
+    @keyframes cardShimmer{to{transform:translateX(120%)}}
+    .journey-shell{position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.10);border-radius:24px;background:radial-gradient(ellipse at 15% 0%,rgba(169,155,255,.10),transparent 42%),linear-gradient(135deg,rgba(255,255,255,.035),rgba(255,255,255,.008));padding:20px}
+    .journey-shell::before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent,rgba(255,255,255,.025),transparent);transform:translateX(-100%);animation:journeySweep 9s ease-in-out infinite;pointer-events:none}
+    @keyframes journeySweep{0%,55%{transform:translateX(-100%)}85%,100%{transform:translateX(100%)}}
+    .journey-node{position:relative;z-index:1;text-align:center;min-width:0}
+    .journey-orb{display:grid;place-items:center;margin:0 auto;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.17);background:#111114;color:#86868b;font-size:11px;font-weight:800;transition:transform .35s,border-color .35s,box-shadow .35s,color .35s}
+    .journey-node.unlocked .journey-orb{color:#0a0a0c;background:var(--mint);border-color:var(--mint);box-shadow:0 0 25px rgba(217,249,121,.23)}
+    .journey-node.current .journey-orb{color:white;border-color:var(--violet);box-shadow:0 0 0 5px rgba(169,155,255,.10),0 0 30px rgba(169,155,255,.2);animation:currentPulse 2.3s ease-in-out infinite}
+    @keyframes currentPulse{50%{box-shadow:0 0 0 8px rgba(169,155,255,.04),0 0 38px rgba(169,155,255,.28)}}
+    .journey-name{font-size:10px;font-weight:700;letter-spacing:.02em;color:rgba(255,255,255,.72);margin-top:8px}
+    .journey-node.unlocked .journey-name{color:var(--mint)}
+    .journey-count{font-size:9px;color:rgba(255,255,255,.32);margin-top:3px}
+    .journey-rail{height:2px;background:rgba(255,255,255,.1);border-radius:99px;overflow:hidden}
+    .journey-rail-fill{height:100%;background:linear-gradient(90deg,var(--violet),var(--mint));transition:width .7s cubic-bezier(.2,.65,.3,1);box-shadow:0 0 12px rgba(217,249,121,.35)}
+    .win-panel{position:relative;overflow:hidden;border-radius:19px;animation:victoryPop .55s cubic-bezier(.2,.8,.25,1.2) both}
+    .win-panel::before{content:"";position:absolute;inset:-2px;background:conic-gradient(from 0deg,transparent 0 24%,rgba(217,249,121,.12),transparent 38% 60%,rgba(169,155,255,.13),transparent 75%);animation:winRotate 7s linear infinite;pointer-events:none}
+    .win-panel>*{position:relative}
+    .victory-sigil{display:grid;place-items:center;flex-shrink:0;width:46px;height:46px;border-radius:15px;background:linear-gradient(145deg,rgba(217,249,121,.22),rgba(169,155,255,.13));border:1px solid rgba(217,249,121,.35);color:var(--mint);font-size:24px;animation:sigilPulse 2s ease-in-out infinite}
+    .xp-spark{border:1px solid rgba(217,249,121,.24);background:rgba(217,249,121,.09);color:var(--mint);box-shadow:0 0 28px rgba(217,249,121,.07)}
+    @keyframes victoryPop{0%{opacity:0;transform:translateY(15px) scale(.975)}70%{transform:translateY(-2px) scale(1.008)}100%{opacity:1;transform:translateY(0) scale(1)}}
+    @keyframes winRotate{to{transform:rotate(360deg)}}
+    @keyframes sigilPulse{50%{box-shadow:0 0 25px rgba(217,249,121,.2);transform:scale(1.04)}}
+    .mistake-shake{animation:softShake .35s ease}
+    @keyframes softShake{0%,100%{transform:translateX(0)}25%{transform:translateX(-3px)}75%{transform:translateX(3px)}}
+    #celebrationLayer{position:fixed;inset:0;z-index:90;overflow:hidden;pointer-events:none}
+    .confetti-piece{position:absolute;top:-18px;width:7px;height:12px;border-radius:2px;opacity:0;animation:confettiRain var(--duration,1.65s) cubic-bezier(.12,.62,.3,1) forwards;animation-delay:var(--delay,0s);box-shadow:0 0 7px rgba(255,255,255,.08)}
+    @keyframes confettiRain{0%{opacity:0;transform:translate3d(0,-15px,0) rotate(0deg)}10%{opacity:1}85%{opacity:.95}100%{opacity:0;transform:translate3d(var(--drift,20px),105vh,0) rotate(var(--spin,680deg))}}
+    .level-up-layer{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:20px;background:rgba(2,2,5,.78);backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px)}
+    .level-up-layer.hidden{display:none}
+    .level-up-card{position:relative;width:min(480px,100%);overflow:hidden;border:1px solid rgba(217,249,121,.25);border-radius:30px;background:radial-gradient(ellipse at 50% 0%,rgba(169,155,255,.19),transparent 48%),linear-gradient(150deg,#17171c,#09090b);padding:34px 28px;text-align:center;box-shadow:0 30px 100px rgba(0,0,0,.6),0 0 80px rgba(169,155,255,.07);animation:levelCardIn .62s cubic-bezier(.2,.8,.25,1.15) both}
+    .level-up-card::before{content:"";position:absolute;inset:12px;border:1px solid rgba(255,255,255,.055);border-radius:22px;pointer-events:none}
+    .level-crown{display:grid;place-items:center;width:76px;height:76px;border-radius:50%;margin:0 auto 22px;border:1px solid rgba(217,249,121,.32);background:radial-gradient(circle,rgba(217,249,121,.22),rgba(169,155,255,.08) 64%,transparent);font-size:30px;color:var(--mint);box-shadow:0 0 45px rgba(217,249,121,.12);animation:crownFloat 2.6s ease-in-out infinite}
+    @keyframes levelCardIn{0%{opacity:0;transform:translateY(24px) scale(.92)}100%{opacity:1;transform:translateY(0) scale(1)}}
+    @keyframes crownFloat{50%{transform:translateY(-5px) rotate(5deg);box-shadow:0 0 60px rgba(217,249,121,.18)}}
+    .ambient-dust{position:absolute;width:3px;height:3px;border-radius:50%;background:#d9f879;box-shadow:0 0 14px #d9f879;opacity:0;pointer-events:none;animation:dustRise 1.2s ease-out forwards}
+    @keyframes dustRise{0%{opacity:0;transform:translate(0,8px) scale(.3)}25%{opacity:1}100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(0)}}
+    @media(max-width:540px){.journey-shell{padding:14px 9px}.journey-orb{width:32px;height:32px;font-size:9px}.journey-name{font-size:9px}.journey-count{font-size:8px}.level-up-card{padding:29px 20px}}
+    @media(prefers-reduced-motion:reduce){.product-orb::after,.flowstep,.journey-shell::before,.journey-node.current .journey-orb,.victory-sigil,.win-panel::before,.level-crown{animation:none!important}.confetti-piece{display:none!important}.reveal{opacity:1;transform:none}}
   </style>
 </head>
 <body class="antialiased">
@@ -24,17 +76,17 @@
     <nav class="mx-auto flex h-[68px] max-w-7xl items-center justify-between px-5 md:px-8" aria-label="Navegación principal">
       <a href="#inicio" class="flex items-center gap-3" aria-label="Misión Abastecimiento, inicio"><span class="grid h-8 w-8 place-items-center rounded-[10px] border border-white/20 bg-white/[.07] text-sm font-black">M<span class="text-[#d9f879]">.</span></span><span class="text-[13px] font-bold tracking-[.08em]">MISIÓN <span class="text-white/50">ABASTECIMIENTO</span></span></a>
       <div class="hidden items-center gap-8 text-[12px] font-medium text-[#86868b] md:flex"><a class="transition hover:text-white" href="#experiencia">Experiencia</a><a class="transition hover:text-white" href="#misiones">Misiones</a><a class="transition hover:text-white" href="#archivo">Archivo de campo</a></div>
-      <a href="#misiones" class="primary-button rounded-full px-4 py-2 text-xs font-bold">Comenzar <span aria-hidden="true">↗</span></a>
+      <div class="flex items-center gap-2"><button id="soundToggle" type="button" aria-pressed="false" class="pill-button rounded-full px-3 py-2 text-[11px] text-white/60" title="Activar o silenciar los efectos sonoros">♫ <span id="soundLabel" class="hidden sm:inline">Sonido apagado</span></button><a href="#misiones" class="primary-button rounded-full px-4 py-2 text-xs font-bold">Iniciar expedición <span aria-hidden="true">↗</span></a></div>
     </nav>
   </header>
 
   <main>
     <section id="inicio" class="relative mx-auto flex min-h-[790px] max-w-7xl flex-col items-center justify-center overflow-hidden px-5 pb-20 pt-32 text-center md:min-h-[860px] md:px-8 md:pt-36">
       <div class="absolute inset-x-0 top-20 -z-10 mx-auto h-[520px] max-w-5xl rounded-full bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,.055),transparent_63%)]"></div>
-      <div class="hero-enter mb-7 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[.035] px-3.5 py-1.5 text-[10px] font-semibold uppercase tracking-[.19em] text-white/60"><span class="h-1.5 w-1.5 rounded-full bg-[#d9f879] shadow-[0_0_12px_#d9f879]"></span> Un simulador. Decisiones reales.</div>
+      <div class="hero-enter mb-7 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[.035] px-3.5 py-1.5 text-[10px] font-semibold uppercase tracking-[.19em] text-white/60"><span class="h-1.5 w-1.5 rounded-full bg-[#d9f879] shadow-[0_0_12px_#d9f879]"></span> Un simulador. Un mundo por desbloquear.</div>
       <h1 class="hero-enter delay max-w-5xl text-5xl font-semibold leading-[.99] tracking-[-.065em] sm:text-6xl md:text-8xl lg:text-[104px]">Aprende haciendo.<br><span class="text-gradient">Domina el abastecimiento.</span></h1>
-      <p class="hero-enter delay2 mt-7 max-w-2xl text-base leading-7 text-[#86868b] md:text-lg md:leading-8">Resuelve escenarios, calcula indicadores y toma decisiones como responsable de compras. Cada error es una oportunidad para entender el porqué.</p>
-      <div class="hero-enter delay2 mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"><a class="primary-button inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-sm font-bold" href="#misiones">Entrar al simulador <span class="text-lg" aria-hidden="true">→</span></a><a class="pill-button inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-sm text-white/75" href="#archivo"><span aria-hidden="true">⌘</span> Consultar la guía</a></div>
+      <p class="hero-enter delay2 mt-7 max-w-2xl text-base leading-7 text-[#86868b] md:text-lg md:leading-8">Entra a una expedición de compras: cada decisión revela una pista, cada cálculo te da experiencia y cada reto superado abre el camino al siguiente nivel. Equivocarte no te detiene: te da información para volver más fuerte.</p>
+      <div class="hero-enter delay2 mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"><a class="primary-button inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-sm font-bold" href="#misiones">Comenzar la expedición <span class="text-lg" aria-hidden="true">→</span></a><a class="pill-button inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-sm text-white/75" href="#archivo"><span aria-hidden="true">⌘</span> Consultar la guía</a></div>
       <div class="hero-enter delay2 mt-12 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] text-white/35"><span>15 misiones prácticas</span><span class="hidden sm:inline">·</span><span>Retroalimentación inmediata</span><span class="hidden sm:inline">·</span><span>Tu progreso, guardado localmente</span></div>
 
       <div id="hero-product" class="product-orb relative mt-16 w-full max-w-4xl" aria-label="Visualización del flujo de trabajo de compras">
@@ -55,7 +107,7 @@
 
     <section id="experiencia" class="border-y border-white/[.08] py-20 md:py-28">
       <div class="mx-auto grid max-w-7xl gap-12 px-5 md:grid-cols-[.85fr_1.15fr] md:items-end md:gap-20 md:px-8">
-        <div class="reveal"><p class="mb-4 text-[10px] font-bold uppercase tracking-[.22em] text-[#d9f879]">Aprendizaje aplicado</p><h2 class="text-4xl font-semibold leading-[1.05] tracking-[-.055em] md:text-6xl">No solo memorices.<br><span class="text-white/35">Resuelve.</span></h2></div>
+        <div class="reveal"><p class="mb-4 text-[10px] font-bold uppercase tracking-[.22em] text-[#d9f879]">Aprendizaje aplicado</p><h2 class="text-4xl font-semibold leading-[1.05] tracking-[-.055em] md:text-6xl">Cada reto es una llave.<br><span class="text-white/35">Desbloquea tu criterio.</span></h2></div>
         <p class="reveal max-w-2xl text-base leading-8 text-[#86868b] md:text-lg">Cada misión parte de una situación empresarial. Analiza la evidencia, elige una acción o resuelve un cálculo, recibe una explicación y vuelve a intentarlo. La teoría está disponible cuando la necesitas.</p>
       </div>
       <div class="mx-auto mt-14 grid max-w-7xl gap-px overflow-hidden rounded-3xl border border-white/[.09] bg-white/[.08] md:grid-cols-3">
@@ -66,11 +118,11 @@
     </section>
 
     <section id="misiones" class="mx-auto max-w-7xl px-5 py-24 md:px-8 md:py-32">
-      <div class="reveal flex flex-col justify-between gap-8 md:flex-row md:items-end"><div><p class="mb-4 text-[10px] font-bold uppercase tracking-[.22em] text-[#d9f879]">Tu centro de operaciones</p><h2 class="text-4xl font-semibold tracking-[-.06em] md:text-6xl">Elige tu siguiente<br><span class="text-white/35">movimiento.</span></h2></div><div class="w-full max-w-xs rounded-2xl border border-white/10 bg-white/[.025] p-4"><div class="flex items-end justify-between"><span class="text-xs text-[#86868b]">Tu progreso</span><strong id="progressLabel" class="text-2xl font-semibold">0<span class="text-sm text-white/35"> / 15</span></strong></div><div class="progress-track mt-3"><div id="progressBar" class="progress-fill"></div></div><div class="mt-3 flex justify-between text-[10px] text-white/35"><span id="xpLabel">0 XP acumulados</span><span id="rankLabel">Aprendiz</span></div></div></div>
+      <div class="reveal flex flex-col justify-between gap-8 md:flex-row md:items-end"><div><p class="mb-4 text-[10px] font-bold uppercase tracking-[.22em] text-[#d9f879]">Tu centro de operaciones</p><h2 class="text-4xl font-semibold tracking-[-.06em] md:text-6xl">Elige tu siguiente<br><span class="text-white/35">movimiento.</span></h2></div><div class="w-full max-w-xs rounded-2xl border border-white/10 bg-white/[.025] p-4"><div class="flex items-end justify-between"><span class="text-xs text-[#86868b]">Tu progreso</span><strong id="progressLabel" class="text-2xl font-semibold">0<span class="text-sm text-white/35"> / 15</span></strong></div><div class="progress-track mt-3"><div id="progressBar" class="progress-fill"></div></div><div class="mt-3 flex justify-between text-[10px] text-white/35"><span id="xpLabel">0 XP acumulados</span><span id="rankLabel">Aprendiz</span></div><div class="mt-2 flex items-center justify-between gap-2 text-[10px] text-white/40"><span>NIVEL <b id="levelNumber" class="text-[#d9f879]">1</b> · <span id="levelLabel">La señal despierta</span></span><span id="streakLabel">Construye tu racha</span></div></div></div>
       <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <button data-filter="all" class="filter-btn pill-button rounded-full bg-white text-black px-4 py-2 text-xs font-semibold">Todas las misiones</button><button data-filter="m28" class="filter-btn pill-button rounded-full px-4 py-2 text-xs text-white/60">02.8 Seguimiento</button><button data-filter="m29" class="filter-btn pill-button rounded-full px-4 py-2 text-xs text-white/60">02.9 Terminación</button><button data-filter="m31" class="filter-btn pill-button rounded-full px-4 py-2 text-xs text-white/60">03.1 Planeación</button>
       </div>
-      <div id="missionGrid" class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
+      <div id="journeyTrack" class="mt-6"></div><div id="missionGrid" class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
       <div id="quizPanel" class="mt-8 hidden scroll-mt-28 rounded-[28px] border border-white/[.12] bg-[#111114] p-5 md:p-9" tabindex="-1"></div>
     </section>
 
@@ -104,6 +156,18 @@
   </footer>
 
   <div id="toast" class="pointer-events-none fixed bottom-5 left-1/2 z-[70] hidden -translate-x-1/2 rounded-full border border-white/15 bg-[#17171a] px-5 py-3 text-xs text-white shadow-2xl" role="status" aria-live="polite"></div>
+  <div id="celebrationLayer" aria-hidden="true"></div>
+  <div id="levelUpLayer" class="level-up-layer hidden" role="dialog" aria-modal="true" aria-labelledby="levelUpTitle" aria-describedby="levelUpText">
+    <div class="level-up-card">
+      <div class="level-crown" aria-hidden="true">✦</div>
+      <p id="levelUpEyebrow" class="mb-3 text-[10px] font-bold uppercase tracking-[.25em] text-[#d9f879]">NUEVO NIVEL DESBLOQUEADO</p>
+      <h2 id="levelUpTitle" class="text-3xl font-semibold leading-tight tracking-[-.05em] text-white md:text-4xl">Aprendiz del flujo</h2>
+      <p id="levelUpText" class="mx-auto mt-4 max-w-sm text-sm leading-7 text-white/55">Cada decisión bien fundamentada abre nuevas posibilidades.</p>
+      <div id="levelUpReward" class="mx-auto mt-6 inline-flex rounded-full border border-white/10 bg-white/[.04] px-4 py-2 text-xs text-[#d9f879]">EXP +100 XP</div>
+      <button id="closeLevelUp" class="primary-button mt-7 w-full rounded-full px-5 py-3.5 text-sm font-bold">Continuar mi ascenso ↗</button>
+      <p class="mt-4 text-[9px] uppercase tracking-[.18em] text-white/25">Aprender · Resolver · Dominar</p>
+    </div>
+  </div>
 
   <script>
   (() => {
@@ -126,7 +190,7 @@
       {id:'m14',module:'mix',title:'Los cartuchos filtrantes',type:'number',intro:'La OC solicita 800 cartuchos. Llegaron 750 el 27 de noviembre y todos fueron aceptados. Las 50 restantes llegarán el 3 de diciembre, después de la fecha de necesidad.',question:'¿Qué porcentaje de la cantidad está aceptado al 27 de noviembre?',answer:93.75,unit:'%',tolerance:0.01,explanation:'Cumplimiento de cantidad = cantidad aceptada ÷ cantidad ordenada × 100. 750 ÷ 800 × 100 = 93.75 %. Quedan 50 unidades pendientes.',tip:'El porcentaje de cantidad no sustituye la evaluación de plazo ni factura.'},
       {id:'m15',module:'mix',title:'Jefe final: dos problemas',type:'choice',intro:'La OC acuerda $125 por cartucho. Se aceptaron 750 de 800 y 50 quedaron pendientes después de la fecha necesaria. Además, se facturan 800 a $130 sin modificación autorizada.',question:'¿Qué decisión está mejor sustentada?',options:['Cerrar porque hay factura y llegó la mayoría.','Registrar el saldo, comunicar el riesgo, aclarar la factura y conservar evidencia antes del cierre.','Autorizar el nuevo precio porque ya se emitió la factura.'],answer:1,why:['La factura no prueba que el saldo se aceptó. Además, hay una variación de precio sin justificar.','','La factura no sustituye la autorización de un cambio de precio. Se debe conciliar lo facturado contra lo acordado.'],explanation:'Cantidad aceptada: 750/800 = 93.75 %. Importe acordado: 800 × $125 = $100,000. Facturado: $104,000. Diferencia: $4,000 o 4 %. No se debe cerrar como plenamente cumplida una compra con saldo y diferencia no resueltos.',tip:'Seguimiento, cierre y planeación se conectan: registra el desvío, resuelve el problema y utiliza sus causas para mejorar.'}
     ];
-    const stateDefault = () => ({name:'',done:{},misses:{},attempts:{}});
+    const stateDefault = () => ({name:'',done:{},misses:{},attempts:{},streak:0,bestStreak:0,sound:false});
     let state = stateDefault(), activeMission = null, lastFeedback = null, currentFilter = 'all';
     try { const s = JSON.parse(localStorage.getItem(STORAGE_KEY)); if (s && s.done && s.misses && s.attempts) state = Object.assign(stateDefault(),s); } catch (_) {}
     const $ = sel => document.querySelector(sel);
@@ -136,22 +200,161 @@
     const xpTotal = () => Object.values(state.done).reduce((n,v)=>n+(v.score||0),0);
     const rank = () => xpTotal()>=1200?'Director':xpTotal()>=800?'Coordinador':xpTotal()>=400?'Analista':'Aprendiz';
     function save(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state));}catch(_){toast('El navegador no permite guardar el avance.');}updateStats();}
-    function updateStats(){const count=doneCount();$('#progressLabel').innerHTML=count+'<span class="text-sm text-white/35"> / 15</span>';$('#progressBar').style.width=(count/15*100)+'%';$('#xpLabel').textContent=xpTotal()+' XP acumulados';$('#rankLabel').textContent=rank();}
+    function levelInfo(){
+      const n=doneCount();
+      if(n===0)return {number:1,name:'La señal despierta',short:'Iniciado',start:0,next:1};
+      if(n<3)return {number:2,name:'Aprendiz del flujo',short:'Explorador',start:1,next:3};
+      if(n<6)return {number:3,name:'Analista de operaciones',short:'Analista',start:3,next:6};
+      if(n<10)return {number:4,name:'Especialista de compras',short:'Especialista',start:6,next:10};
+      if(n<15)return {number:5,name:'Estratega de abastecimiento',short:'Estratega',start:10,next:15};
+      return {number:6,name:'Maestro del abastecimiento',short:'Maestro',start:15,next:15};
+    }
+    function renderJourney(){
+      const host=$('#journeyTrack');if(!host)return;
+      const n=doneCount(),lv=levelInfo(),milestones=[
+        {count:1,roman:'II',name:'Explorador'},
+        {count:3,roman:'III',name:'Analista'},
+        {count:6,roman:'IV',name:'Especialista'},
+        {count:10,roman:'V',name:'Estratega'},
+        {count:15,roman:'VI',name:'Maestro'}
+      ];
+      const progress=lv.next===lv.start?100:Math.max(0,Math.min(100,((n-lv.start)/(lv.next-lv.start))*100));
+      host.innerHTML=`<div class="journey-shell">
+        <div class="relative z-[1] flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
+          <div><div class="text-[9px] font-bold uppercase tracking-[.22em] text-[#a99bff]">La ruta del dominio</div><div class="mt-2 text-lg font-semibold tracking-tight">${safe(lv.name)}</div><p class="mt-1 text-xs text-white/40">${n===15?'Has completado la expedición completa.':(lv.next-n)+' reto'+(lv.next-n===1?'':'s')+' para el siguiente ascenso'}</p></div>
+          <div class="shrink-0 rounded-full border border-white/10 bg-black/30 px-3 py-2 text-[10px] text-white/55">NIVEL <b class="ml-1 text-[#d9f879]">${lv.number} / 6</b><span class="mx-2 text-white/20">·</span><b class="text-white/75">${Math.round(progress)}%</b></div>
+        </div>
+        <div class="relative mt-6">
+          <div class="journey-rail absolute left-[8%] right-[8%] top-[19px]"><div class="journey-rail-fill" style="width:${Math.min(100,n/15*100)}%"></div></div>
+          <div class="relative grid grid-cols-5 gap-1">${milestones.map(m=>{
+            const unlocked=n>=m.count,active=!unlocked&&lv.next===m.count;
+            return `<div class="journey-node ${unlocked?'unlocked':''} ${active?'current':''}"><div class="journey-orb">${unlocked?'✓':m.roman}</div><div class="journey-name">${m.name}</div><div class="journey-count">${unlocked?'DESBLOQUEADO':m.count+' misiones'}</div></div>`;
+          }).join('')}</div>
+        </div>
+        <div class="mt-5 flex flex-wrap items-center justify-between gap-2 border-t border-white/[.07] pt-4 text-[10px]"><span class="text-white/35">✦ Cada respuesta correcta suma experiencia.</span><span class="text-[#a99bff]">${state.streak?'✦ Racha activa: '+state.streak:'La próxima respuesta correcta inicia tu racha'}</span></div>
+      </div>`;
+    }
+    function syncSoundButton(){
+      const b=$('#soundToggle'),label=$('#soundLabel');if(!b)return;
+      b.setAttribute('aria-pressed',state.sound?'true':'false');
+      b.title=state.sound?'Silenciar efectos sonoros':'Activar efectos sonoros';
+      if(label)label.textContent=state.sound?'Sonido activado':'Sonido apagado';
+      b.classList.toggle('text-[#d9f879]',!!state.sound);
+    }
+    function playChime(){
+      if(!state.sound)return;
+      try{
+        const Ctx=window.AudioContext||window.webkitAudioContext;if(!Ctx)return;
+        const ctx=new Ctx(),now=ctx.currentTime;
+        [659.25,783.99,987.77,1318.51].forEach((hz,i)=>{
+          const osc=ctx.createOscillator(),gain=ctx.createGain();
+          osc.type='sine';osc.frequency.value=hz;gain.gain.setValueAtTime(.0001,now+i*.075);
+          gain.gain.exponentialRampToValueAtTime(.06,now+i*.075+.025);gain.gain.exponentialRampToValueAtTime(.0001,now+i*.075+.42);
+          osc.connect(gain);gain.connect(ctx.destination);osc.start(now+i*.075);osc.stop(now+i*.075+.44);
+        });
+        window.setTimeout(()=>ctx.close().catch(()=>{}),900);
+      }catch(_){}
+    }
+    function showLevelUp(lv,earned){
+      $('#levelUpEyebrow').textContent=lv.number===6?'EXPEDICIÓN COMPLETADA':'NUEVO NIVEL DESBLOQUEADO';
+      $('#levelUpTitle').textContent=lv.name;
+      $('#levelUpText').textContent=lv.number===6?'Las 15 misiones están dominadas. Ahora puedes explicar, calcular y defender decisiones de abastecimiento con evidencia.':'Has elevado tu dominio al nivel '+lv.number+'. Un nuevo tramo de la expedición te espera: conserva la curiosidad y justifica cada decisión con datos.';
+      $('#levelUpReward').textContent=(earned?'EXP +'+earned+' XP · ':'')+(state.bestStreak?'RACHA MÁXIMA '+state.bestStreak:'PROGRESO REGISTRADO');
+      $('#levelUpLayer').classList.remove('hidden');$('#closeLevelUp').focus({preventScroll:true});
+    }
+    function celebrate(feedback){
+      const layer=$('#celebrationLayer'),panel=$('#quizPanel .win-panel');layer.innerHTML='';
+      if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+        const palette=['#d9f879','#f5f5f7','#a99bff','#9de7e4','#ffffff'];
+        for(let i=0;i<56;i++){
+          const p=document.createElement('span');p.className='confetti-piece';p.style.left=(Math.random()*100)+'%';p.style.background=palette[Math.floor(Math.random()*palette.length)];p.style.setProperty('--drift',(Math.random()*240-120)+'px');p.style.setProperty('--spin',(Math.random()*1000+360)+'deg');p.style.setProperty('--duration',(1.25+Math.random()*.8)+'s');p.style.setProperty('--delay',(Math.random()*.22)+'s');p.style.width=(4+Math.random()*5)+'px';p.style.height=(7+Math.random()*9)+'px';layer.appendChild(p);
+        }
+        if(panel){const rect=panel.getBoundingClientRect();for(let i=0;i<16;i++){const p=document.createElement('span');p.className='ambient-dust';p.style.left=(Math.random()*Math.max(1,rect.width))+'px';p.style.top=(Math.random()*Math.max(1,rect.height))+'px';p.style.setProperty('--dx',(Math.random()*120-60)+'px');p.style.setProperty('--dy',(-30-Math.random()*90)+'px');panel.appendChild(p);window.setTimeout(()=>p.remove(),1300);}}
+      }
+      window.setTimeout(()=>{layer.innerHTML='';},2300);
+      playChime();
+      toast(feedback.earned?'✦ Reto superado · +'+feedback.earned+' XP':'✦ Buen repaso: aprendizaje reforzado');
+      if(feedback.levelUp&&feedback.level)window.setTimeout(()=>showLevelUp(feedback.level,feedback.earned),530);
+    }
+    function updateStats(){
+      const count=doneCount(),lv=levelInfo();
+      $('#progressLabel').innerHTML=count+'<span class="text-sm text-white/35"> / 15</span>';
+      $('#progressBar').style.width=(count/15*100)+'%';
+      $('#xpLabel').textContent=xpTotal()+' XP acumulados';$('#rankLabel').textContent=rank();
+      const ln=$('#levelNumber'),ll=$('#levelLabel'),sl=$('#streakLabel');
+      if(ln)ln.textContent=lv.number;if(ll)ll.textContent=lv.short;
+      if(sl)sl.textContent=state.streak?'✦ Racha '+state.streak:'Construye tu racha';
+      renderJourney();syncSoundButton();
+    }
     function toast(message){const el=$('#toast');el.textContent=message;el.classList.remove('hidden');el.classList.add('toast');window.setTimeout(()=>el.classList.add('hidden'),2500);}
     function moduleName(m){return m==='m28'?'02.8 · Seguimiento':m==='m29'?'02.9 · Terminación':m==='m31'?'03.1 · Planeación':'Caso integrador';}
-    function renderMissions(filter=currentFilter){currentFilter=filter;const list=missions.filter(m=>filter==='all'||m.module===filter);$('#missionGrid').innerHTML=list.map((m)=>{const ix=missions.findIndex(x=>x.id===m.id);const d=state.done[m.id];const icon=m.type==='number'?'∑':m.module==='mix'?'◆':'↗';return `<button class="module-card rounded-2xl p-5 text-left" data-open-mission="${m.id}"><div class="flex items-start justify-between gap-4"><span class="grid h-11 w-11 place-items-center rounded-xl border border-white/10 bg-white/[.04] text-lg text-[#d9f879]">${icon}</span><span class="text-[10px] font-semibold tracking-[.12em] ${d?'text-[#d9f879]':'text-white/30'}">${d?'✓ COMPLETADA':'MISIÓN '+String(ix+1).padStart(2,'0')}</span></div><div class="mt-6 text-[10px] uppercase tracking-[.15em] text-white/35">${moduleName(m.module)}</div><h3 class="mt-2 text-base font-semibold leading-snug">${safe(m.title)}</h3><p class="mt-2 min-h-[42px] text-xs leading-6 text-[#86868b]">${safe(m.intro)}</p><div class="mt-5 flex items-center justify-between border-t border-white/[.08] pt-4"><span class="text-[10px] text-white/35">${d?d.score+' XP':'Reto de '+(m.type==='number'?'cálculo':'decisión')}</span><span class="text-sm text-[#d9f879]">${d?'Revisar ↗':'Comenzar ↗'}</span></div></button>`;}).join('');$$('[data-open-mission]').forEach(btn=>btn.addEventListener('click',()=>openMission(btn.dataset.openMission)));updateStats();}
+    function renderMissions(filter=currentFilter){
+      currentFilter=filter;
+      const list=missions.filter(m=>filter==='all'||m.module===filter);
+      $('#missionGrid').innerHTML=list.map(m=>{
+        const ix=missions.findIndex(x=>x.id===m.id),d=state.done[m.id],locked=!d&&ix>doneCount();
+        const icon=m.type==='number'?'∑':m.module==='mix'?'◆':'↗';
+        const cls='module-card rounded-2xl p-5 text-left '+(d?'mission-complete ':'')+(locked?'mission-locked':'');
+        const status=locked?'BLOQUEADA':d?'✦ DOMINADA':'MISIÓN '+String(ix+1).padStart(2,'0');
+        const footer=locked?'Completa el reto anterior para abrir':d?d.score+' XP · Volver a practicar':'Reto de '+(m.type==='number'?'cálculo':'decisión')+' · '+(ix===doneCount()?'DISPONIBLE':'DESBLOQUEADO');
+        return `<button class="${cls}" data-open-mission="${m.id}" ${locked?'disabled aria-disabled="true"':''}><div class="flex items-start justify-between gap-4"><span class="grid h-11 w-11 place-items-center rounded-xl border border-white/10 bg-white/[.04] text-lg text-[#d9f879]">${locked?'◌':d?'✦':icon}</span><span class="text-[10px] font-semibold tracking-[.12em] ${d?'text-[#d9f879]':locked?'text-white/20':'text-white/30'}">${status}</span></div><div class="mt-6 text-[10px] uppercase tracking-[.15em] text-white/35">${moduleName(m.module)}</div><h3 class="mt-2 text-base font-semibold leading-snug">${safe(m.title)}</h3><p class="mt-2 min-h-[42px] text-xs leading-6 text-[#86868b]">${safe(m.intro)}</p><div class="mt-5 flex items-center justify-between gap-2 border-t border-white/[.08] pt-4"><span class="text-[10px] text-white/35">${footer}</span><span class="text-sm text-[#d9f879]">${locked?'⌑':d?'↻':'→'}</span></div></button>`;
+      }).join('');
+      $$('[data-open-mission]').forEach(btn=>btn.addEventListener('click',()=>{if(!btn.disabled)openMission(btn.dataset.openMission)}));
+      updateStats();
+    }
     function openMission(id){activeMission=missions.find(m=>m.id===id);lastFeedback=null;renderQuiz();$('#quizPanel').classList.remove('hidden');$('#quizPanel').scrollIntoView({behavior:'smooth',block:'start'});$('#quizPanel').focus({preventScroll:true});}
     function renderQuiz(){const m=activeMission;if(!m)return;let html=`<div class="flex flex-col justify-between gap-5 sm:flex-row sm:items-start"><div><div class="text-[10px] font-bold uppercase tracking-[.2em] text-[#d9f879]">${moduleName(m.module)} · MISIÓN ${missions.findIndex(x=>x.id===m.id)+1}/15</div><h3 class="mt-3 text-2xl font-semibold tracking-[-.04em] md:text-3xl">${safe(m.title)}</h3></div><button id="closeQuiz" class="pill-button self-start rounded-full px-4 py-2 text-xs text-white/60">Cerrar ×</button></div><div class="mt-6 rounded-2xl border border-white/[.08] bg-black/30 p-5"><p class="text-sm leading-7 text-white/70">${safe(m.intro)}</p></div><h4 class="mt-7 text-base font-semibold">${safe(m.question)}</h4>`;
       if(m.type==='choice'){html+=`<div class="mt-4 grid gap-2">${m.options.map((opt,i)=>{let cls='quiz-choice flex w-full items-start gap-3 rounded-xl p-4 text-left text-sm leading-6 text-white/80';if(lastFeedback){if(i===m.answer)cls+=' correct';else if(i===lastFeedback.choice)cls+=' wrong';}return `<button class="${cls}" data-answer-choice="${i}" ${lastFeedback?'disabled':''}><span class="grid h-6 w-6 shrink-0 place-items-center rounded-lg border border-white/15 text-[10px] font-bold text-white/50">${String.fromCharCode(65+i)}</span><span>${safe(opt)}</span></button>`;}).join('')}</div>`;}else{html+=`<form id="numberForm" class="mt-5 flex flex-col gap-3 sm:flex-row"><input class="num-input min-w-0 flex-1 rounded-xl px-4 py-3 text-sm" type="number" step="any" inputmode="decimal" name="answer" aria-label="Respuesta numérica" placeholder="Escribe tu resultado" ${lastFeedback?'disabled':''} required><button class="primary-button rounded-full px-6 py-3 text-sm font-bold" ${lastFeedback?'disabled':''}>Comprobar resultado</button></form><p class="mt-2 text-[10px] text-white/35">Ingresa el número sin texto adicional. Unidad: ${safe(m.unit)}.</p>`;}
-      if(lastFeedback){const correct=lastFeedback.correct;html+=`<div class="feedback ${correct?'':'bad'} mt-6 rounded-2xl p-5" role="status" aria-live="polite"><div class="text-xs font-bold uppercase tracking-[.13em] ${correct?'text-[#d9f879]':'text-[#e49aa2]'}">${correct?'✓ Respuesta correcta':'↻ Revisa el razonamiento'}</div>${!correct?`<p class="mt-3 text-sm leading-6 text-white/80"><b>Qué estuvo mal:</b> ${safe(lastFeedback.reason)}</p>`:''}<p class="mt-3 text-sm leading-7 text-white/75"><b>Explicación:</b> ${safe(m.explanation)}</p><div class="mt-4 rounded-xl border border-white/10 bg-black/30 p-4 text-xs leading-6 text-[#d9f879]"><b>Clave de aprendizaje:</b> ${safe(m.tip)}</div><div class="mt-5 flex flex-wrap gap-3">${correct?`<button id="nextMission" class="primary-button rounded-full px-5 py-3 text-xs font-bold">Siguiente misión →</button>`:`<button id="retryMission" class="primary-button rounded-full px-5 py-3 text-xs font-bold">Intentar de nuevo</button>`}<a href="#archivo" id="guideFromQuiz" class="pill-button rounded-full px-5 py-3 text-xs text-white/70">Consultar la guía</a></div></div>`;}
+      if(lastFeedback){
+        const correct=lastFeedback.correct;
+        html+=`<div class="feedback ${correct?'win-panel':'bad mistake-shake'} mt-6 rounded-2xl p-5" role="status" aria-live="polite">
+          ${correct?`<div class="mb-5 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-[#d9f879]/15 bg-black/25 p-4"><div class="flex items-center gap-3"><span class="victory-sigil" aria-hidden="true">✦</span><div><div class="text-[9px] font-bold uppercase tracking-[.2em] text-[#d9f879]">${lastFeedback.earned?'RETO SUPERADO':'DOMINIO REFORZADO'}</div><div class="mt-1 text-base font-semibold text-white">${lastFeedback.earned?'La experiencia es tuya.':'Ya habías completado esta misión.'}</div><div class="mt-1 text-[10px] text-white/35">${lastFeedback.earned?'La siguiente misión está lista para desbloquear.':'Resolver de nuevo refuerza la memoria.'}</div></div></div><div class="xp-spark rounded-full px-3 py-2 text-xs font-black">${lastFeedback.earned?'+'+lastFeedback.earned+' XP':'YA REGISTRADA'}</div></div>`:''}
+          <div class="text-xs font-bold uppercase tracking-[.13em] ${correct?'text-[#d9f879]':'text-[#e49aa2]'}">${correct?'✓ Respuesta correcta':'↻ Nueva pista descubierta'}</div>
+          ${!correct?`<p class="mt-3 text-sm leading-6 text-white/80"><b>Qué estuvo mal:</b> ${safe(lastFeedback.reason)}</p>`:''}
+          <p class="mt-3 text-sm leading-7 text-white/75"><b>Explicación:</b> ${safe(m.explanation)}</p>
+          <div class="mt-4 rounded-xl border border-white/10 bg-black/30 p-4 text-xs leading-6 text-[#d9f879]"><b>Clave de aprendizaje:</b> ${safe(m.tip)}</div>
+          <div class="mt-5 flex flex-wrap gap-3">${correct?`<button id="nextMission" class="primary-button rounded-full px-5 py-3 text-xs font-bold">${doneCount()===15?'Completar expedición ↗':'Desbloquear siguiente misión →'}</button>`:`<button id="retryMission" class="primary-button rounded-full px-5 py-3 text-xs font-bold">Intentar de nuevo ↻</button>`}<a href="#archivo" id="guideFromQuiz" class="pill-button rounded-full px-5 py-3 text-xs text-white/70">Consultar la guía</a></div>
+        </div>`;
+      }
       $('#quizPanel').innerHTML=html;$('#closeQuiz').addEventListener('click',()=>{$('#quizPanel').classList.add('hidden');activeMission=null;lastFeedback=null;});$$('[data-answer-choice]').forEach(b=>b.addEventListener('click',()=>submitChoice(Number(b.dataset.answerChoice))));$('#numberForm')?.addEventListener('submit',e=>{e.preventDefault();submitNumber(Number(new FormData(e.currentTarget).get('answer')));});$('#retryMission')?.addEventListener('click',()=>{lastFeedback=null;renderQuiz();});$('#nextMission')?.addEventListener('click',nextMission);$('#guideFromQuiz')?.addEventListener('click',()=>{$('#quizPanel').classList.add('hidden');});
     }
     function award(m){if(state.done[m.id])return 0;const score=(state.misses[m.id]||0)===0?100:60;state.done[m.id]={score,misses:state.misses[m.id]||0,when:new Date().toISOString()};return score;}
-    function submitChoice(choice){const m=activeMission;if(!m||lastFeedback)return;state.attempts[m.id]=(state.attempts[m.id]||0)+1;const correct=choice===m.answer;if(correct){const earned=award(m);lastFeedback={correct,choice,earned};}else{state.misses[m.id]=(state.misses[m.id]||0)+1;lastFeedback={correct,choice,reason:m.why[choice]||'La opción no coincide con la decisión mejor sustentada.'};}save();renderQuiz();renderMissions(currentFilter);}
-    function submitNumber(value){const m=activeMission;if(!m||lastFeedback)return;state.attempts[m.id]=(state.attempts[m.id]||0)+1;const correct=Number.isFinite(value)&&Math.abs(value-m.answer)<=m.tolerance;if(correct){lastFeedback={correct,earned:award(m)};}else{state.misses[m.id]=(state.misses[m.id]||0)+1;lastFeedback={correct,reason:'Tu resultado fue '+value+'. Revisa la fórmula, el orden de las operaciones y las unidades; el procedimiento correcto aparece abajo.'};}save();renderQuiz();renderMissions(currentFilter);}
+    function submitChoice(choice){
+      const m=activeMission;if(!m||lastFeedback)return;
+      state.attempts[m.id]=(state.attempts[m.id]||0)+1;
+      const correct=choice===m.answer,previousLevel=levelInfo().number;
+      if(correct){
+        const earned=award(m);
+        if(earned){state.streak=(state.streak||0)+1;state.bestStreak=Math.max(state.bestStreak||0,state.streak);}
+        const lv=levelInfo();lastFeedback={correct,choice,earned,levelUp:earned>0&&lv.number>previousLevel,level:lv};
+      }else{
+        state.misses[m.id]=(state.misses[m.id]||0)+1;state.streak=0;
+        lastFeedback={correct,choice,reason:m.why[choice]||'La opción no coincide con la decisión mejor sustentada.'};
+      }
+      save();renderQuiz();renderMissions(currentFilter);if(correct)celebrate(lastFeedback);
+    }
+    function submitNumber(value){
+      const m=activeMission;if(!m||lastFeedback)return;
+      state.attempts[m.id]=(state.attempts[m.id]||0)+1;
+      const correct=Number.isFinite(value)&&Math.abs(value-m.answer)<=m.tolerance,previousLevel=levelInfo().number;
+      if(correct){
+        const earned=award(m);
+        if(earned){state.streak=(state.streak||0)+1;state.bestStreak=Math.max(state.bestStreak||0,state.streak);}
+        const lv=levelInfo();lastFeedback={correct,earned,levelUp:earned>0&&lv.number>previousLevel,level:lv};
+      }else{
+        state.misses[m.id]=(state.misses[m.id]||0)+1;state.streak=0;
+        lastFeedback={correct,reason:'Tu resultado fue '+value+'. Revisa la fórmula, el orden de las operaciones y las unidades; el procedimiento correcto aparece abajo.'};
+      }
+      save();renderQuiz();renderMissions(currentFilter);if(correct)celebrate(lastFeedback);
+    }
     function nextMission(){const next=missions.find(m=>!state.done[m.id]);if(next){openMission(next.id);}else{$('#quizPanel').classList.add('hidden');toast('¡Campaña completada! Descarga tu reporte.');$('#detalles').scrollIntoView({behavior:'smooth'});}}
     function downloadReport(){const lines=['MISIÓN ABASTECIMIENTO — REPORTE DE PRÁCTICA','Participante: '+(state.name||'Sin alias'),'Rango: '+rank(),'XP: '+xpTotal()+' / 1500','Misiones completadas: '+doneCount()+' / 15','Intentos registrados: '+Object.values(state.attempts).reduce((a,b)=>a+b,0),'Errores antes de corregir: '+Object.values(state.misses).reduce((a,b)=>a+b,0),'','DETALLE'];missions.forEach((m,i)=>{const d=state.done[m.id];lines.push((i+1)+'. '+m.title+' | '+(d?'Completada, '+d.score+' XP, errores: '+d.misses:'Pendiente')+' | Intentos: '+(state.attempts[m.id]||0));});lines.push('','Reporte generado localmente. No constituye una calificación oficial.');const blob=new Blob([lines.join('\n')],{type:'text/plain;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='reporte-mision-abastecimiento.txt';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);}
-    $('#downloadReport').addEventListener('click',downloadReport);$('#printReport').addEventListener('click',()=>window.print());$('#resetProgress').addEventListener('click',()=>{if(confirm('¿Seguro que deseas reiniciar el progreso guardado en este navegador?')){state=stateDefault();save();renderMissions(currentFilter);if(activeMission){lastFeedback=null;renderQuiz();}toast('El progreso se reinició.');}});
+    $('#downloadReport').addEventListener('click',downloadReport);$('#printReport').addEventListener('click',()=>window.print());
+    $('#resetProgress').addEventListener('click',()=>{if(confirm('¿Seguro que deseas reiniciar el progreso guardado en este navegador?')){state=stateDefault();save();renderMissions(currentFilter);if(activeMission){lastFeedback=null;renderQuiz();}toast('La expedición se reinició.');}});
+    $('#soundToggle').addEventListener('click',()=>{state.sound=!state.sound;save();syncSoundButton();if(state.sound)playChime();});
+    $('#closeLevelUp').addEventListener('click',()=>{$('#levelUpLayer').classList.add('hidden');$('#nextMission')?.focus({preventScroll:true});});
+    $('#levelUpLayer').addEventListener('click',e=>{if(e.target===$('#levelUpLayer'))$('#levelUpLayer').classList.add('hidden');});
+    window.addEventListener('keydown',e=>{if(e.key==='Escape')$('#levelUpLayer').classList.add('hidden');});
     $$('.filter-btn').forEach(btn=>btn.addEventListener('click',()=>{$$('.filter-btn').forEach(b=>{b.classList.remove('bg-white','text-black');b.classList.add('text-white/60');});btn.classList.add('bg-white','text-black');btn.classList.remove('text-white/60');renderMissions(btn.dataset.filter);}));
     const observer = new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}}),{threshold:.12});$$('.reveal').forEach(el=>observer.observe(el));
     const hero = $('#hero-product');let raf=0;window.addEventListener('scroll',()=>{if(raf)return;raf=requestAnimationFrame(()=>{const rect=hero.getBoundingClientRect();const center=rect.top+rect.height/2-window.innerHeight/2;hero.style.setProperty('--parallax',Math.max(-22,Math.min(22,-center*.035))+'px');raf=0;});},{passive:true});
